@@ -1,6 +1,6 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse , RedirectResponse
 from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime, timedelta
 import random
@@ -33,7 +33,7 @@ scheduler.start()
 
 @app.get("/")
 def root():
-    return {"message": "Sheafr is alive"}
+    return  RedirectResponse(url="/chat")
 
 @app.get("/chat")
 def get_chat():
